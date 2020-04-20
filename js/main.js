@@ -21,11 +21,13 @@ xmlhttp.onreadystatechange = function()
 
             var upVotes = getPercentVotes(parseInt(currentUpAmount), parseInt(currentDownAmount));
             var downVotes = getPercentVotes(parseInt(currentUpAmount), parseInt(currentDownAmount), false);
-             
+
+            var winColor =  upVotes <= downVotes ? 'rgb(235, 161, 32, 1)' : 'rgb(49, 192, 186, 1)';
+            var thumb =  upVotes <= downVotes ? 'down' : 'up';       
 
             displayData += '<article style="background-image: url(img/' + currentFamous.image + ')">'
                + '<div class="card-content"><header class="person-name" role="heading">'
-               + '<span class="fa fa-thumbs-up fa-2x"></span>'
+               + '<span class="fa fa-thumbs-' + thumb + ' fa-2x" style="background-color: ' + winColor + '; color:#fff"></span>'
                + '<h2>' + currentFamous.name + '</h2>'
                + '</header>'
                + '<div class="description">'
@@ -122,6 +124,13 @@ function getVote(selectedEvent)
     selectedEvent.classList.add('selected');
 }
 
+/*
+*   Function to manage the votes
+*
+*   @param personSelected int
+*   @return void
+*/
+
 function handleVote(personSelected)
 {
     var code = personSelected.value,
@@ -142,6 +151,13 @@ function handleVote(personSelected)
     }
 }
 
+/*
+*   Function to modify the voteAgain section
+*
+*   @param personSelected int
+*   @return void
+*/
+
 function voteAgain(personSelected)
 {
     var code = personSelected.value;
@@ -150,6 +166,14 @@ function voteAgain(personSelected)
     document.getElementById('desc-' + code).style.display = 'block';
     document.getElementById('thanks-' + code).style.display = 'none';
 }
+
+/*
+*   Function to save the current vote
+*
+*   @param personSelected int
+*   @param isUpVote boolean
+*   @return void
+*/
 
 function saveVote(personSelected, isUpVote) {
     var currentUpAmount = sessionStorage.getItem('voteUp_' + personSelected) 
@@ -166,6 +190,13 @@ function saveVote(personSelected, isUpVote) {
     }
     updatePercentBar(personSelected);
 }
+
+/*
+*   Function to update the percent bar
+*
+*   @param personSelected int
+*   @return void
+*/
 
 function updatePercentBar(personSelected) {
     var currentUpAmount = sessionStorage.getItem('voteUp_' + personSelected) 
