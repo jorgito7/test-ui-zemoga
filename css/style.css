@@ -904,10 +904,6 @@
 	.publication-date {
 		margin: -0.5em 0 1em 0;
 	}
-	.card-content {
-		position: relative;
-		bottom: 0;
-	}
 
 	.card-description {
 		font-size: 1.2em;
@@ -924,6 +920,10 @@
 
 	.thanks-desc {
 		display: none;
+	}
+
+	.card-footer {
+		height: 3em;
 	}
 
 
@@ -1004,7 +1004,8 @@
 		height: 3em;
 		overflow:hidden;
 		background:rgb(235, 161, 32, 0.6);
-		position: relative;
+		position: absolute;
+		bottom: 0;
 	}
 
 	.bar {

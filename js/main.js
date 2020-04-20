@@ -27,7 +27,7 @@ xmlhttp.onreadystatechange = function()
 
             displayData += '<article style="background-image: url(img/' + currentFamous.image + ')">'
                + '<div class="card-content"><header class="person-name" role="heading">'
-               + '<span class="fa fa-thumbs-' + thumb + ' fa-2x" style="background-color: ' + winColor + '; color:#fff"></span>'
+               + '<span id="thumb-' + currentFamous.code + '" class="fa fa-thumbs-' + thumb + ' fa-2x" style="background-color: ' + winColor + '; color:#fff"></span>'
                + '<h2>' + currentFamous.name + '</h2>'
                + '</header>'
                + '<div class="description">'
@@ -42,7 +42,7 @@ xmlhttp.onreadystatechange = function()
                + '<button class="vote" id="vote-once" value="' + currentFamous.code + '">Vote now</button>'
                + '</p><p class="form-again" id="form-again-' + currentFamous.code + '">'
                + '<button class="vote" id="vote-again" value="' + currentFamous.code + '">Vote again</button>'
-               + '</p></div><footer>'
+               + '</p></div><footer class="card-footer">'
                + '<div class="progress">'
                + '<div class="bar" id="bar-up-' + currentFamous.code + '" style="width: ' + upVotes + '%"></div>'
                + '<p class="percent">'
@@ -213,4 +213,34 @@ function updatePercentBar(personSelected) {
     document.getElementById('bar-down-' + (personSelected+1)).style.width = downVotes.toString() + '%';
     document.getElementById('percent-up-' + (personSelected+1)).innerHTML = upVotes.toString() + '%';
     document.getElementById('percent-down-' + (personSelected+1)).innerHTML = downVotes.toString() + '%';
+    updateTitleThumb(personSelected);
+}
+
+/*
+*   Function to update the Thumb at the left of the person name.
+*   @param personSelected int
+*   @return void
+*/
+
+function updateTitleThumb(personSelected) {
+    var currentUpAmount = sessionStorage.getItem('voteUp_' + personSelected) 
+        ? sessionStorage.getItem('voteUp_' + personSelected)
+        : jsonArray.famous_people[personSelected].votes[0].up;
+    var currentDownAmount = sessionStorage.getItem('voteDown_' + personSelected)
+        ? sessionStorage.getItem('voteDown_' + personSelected)
+        : jsonArray.famous_people[personSelected].votes[0].down;
+
+    var upVotes = getPercentVotes(parseInt(currentUpAmount), parseInt(currentDownAmount));
+    var downVotes = getPercentVotes(parseInt(currentUpAmount), parseInt(currentDownAmount), false);
+
+    var winColor =  upVotes <= downVotes ? 'rgb(235, 161, 32, 1)' : 'rgb(49, 192, 186, 1)';
+    var thumbClass =  upVotes <= downVotes ? 'fa-thumbs-down' : 'fa-thumbs-up';
+    var thumbElement = document.getElementById('thumb-' + (personSelected+1));
+    thumbElement.style.backgroundColor = winColor;
+    if (thumbElement.classList.contains('fa-thumbs-up'))
+        thumbElement.classList.remove('fa-thumbs-up');
+    else
+        thumbElement.classList.remove('fa-thumbs-down');
+    thumbElement.classList.add(thumbClass);
+
 }
