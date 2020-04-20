@@ -10,11 +10,14 @@ I decided to use Pure CSS, because it is a better way to show the selectors and 
 
 I didn't create the landing pages for the header menu items (I didn't have enough time). However I had used the common folder to add the header that is common on all pages.
 
-I have a little visual issue with the vote cards!. (The percent bar moves depending the description content). But is simple to correct (just add a bottom:0 style and make it position absolute), but I don't have enough time
+Recommended browser: Chrome (I need a few minutes more to add the complete compatibility in all latest browsers).
 
 Requirements:
 
- I used Vanilla Javascript, 
+I used Vanilla Javascript.
+ 
 For the persistence, I used the Session (sessionStorage).
-It needs to be runned on a server side (i used http-server -p8000 command for run it)
- Bonus points: Some sort of Test (E2E, BDD, etc) I don't enough time, However if you give me 1 more day, I could Add it.
+
+It needs to be runned on a server side (i used http-server -p8000 command for run it).
+
+Bonus points: Some sort of Test (E2E, BDD, etc) I don't enough time, However if you give me 1 more day, I could Add it.
