@@ -1,0 +1,48 @@
+{
+	"famous_people" : [
+		{
+			"name" : "Kanye West",
+			"category" : "Entretainment",
+			"description" : "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+			"image" : "kany.png",
+			"votes" : [ {
+				"up" : 12,
+				"down" : 4
+			} ],
+			"code" : 1
+		},
+		{
+			"name" : "Mark Zuckerberg",
+			"category" : "Business",
+			"description" : "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+			"image" : "mark.png",
+			"votes" : [ {
+				"up" : 11,
+				"down" : 3
+			} ],
+			"code" : 2
+		},
+		{
+			"name" : "Cristina Fernández de Kirchner",
+			"category" : "Politics",
+			"description" : "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+			"image" : "cristina.png",
+			"votes" : [ {
+				"up" : 1,
+				"down" : 45
+			} ],
+			"code" : 3
+		},
+		{
+			"name" : "Malala Yousafzai",
+			"category" : "Entretainment",
+			"description" : "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+			"image" : "malala.png",
+			"votes" : [ {
+				"up" : 5,
+				"down" : 23
+			} ],
+			"code" : 4
+		}
+	]
+}
